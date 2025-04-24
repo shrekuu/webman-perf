@@ -12,11 +12,18 @@
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-use Webman\Route;
-
-Route::disableDefaultRoute();
-
-
-Route::any('/', [app\controller\IndexController::class, 'index']);
-
-Route::any('/api/users', [app\controller\api\UserController::class, 'index']);
+return [
+    'default' => [
+        'password' => '',
+        'host' => '127.0.0.1',
+        'port' => 6379,
+        'database' => 0,
+        'pool' => [
+            'max_connections' => 5,
+            'min_connections' => 1,
+            'wait_timeout' => 3,
+            'idle_timeout' => 60,
+            'heartbeat_interval' => 50,
+        ],
+    ]
+];
